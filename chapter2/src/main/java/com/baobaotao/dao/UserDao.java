@@ -20,7 +20,18 @@ public class UserDao {
 	public int getMatchCount(String userName, String password) {
 		String sqlStr = " SELECT count(*) FROM t_user "
 				+ " WHERE user_name =? and password=? ";
+		System.out.println(sqlStr);
 		return jdbcTemplate.queryForInt(sqlStr, new Object[] { userName, password });
+		
+		/**
+		 * 测试sql注入
+		 * 当页面输入密码：1' or '1'='1，典型sql注入
+		 * SELECT count(*) FROM t_user  WHERE user_name = 'admin' and password= '1' or '1'='1'
+		 * **/
+//		String sqlStr = " SELECT count(*) FROM t_user "
+//				+ " WHERE user_name = '"+userName+"' and password= '"+password+"'";
+//		System.out.println(sqlStr);
+//		return jdbcTemplate.queryForInt(sqlStr);
 	}
 
 	public User findUserByUserName(final String userName) {
