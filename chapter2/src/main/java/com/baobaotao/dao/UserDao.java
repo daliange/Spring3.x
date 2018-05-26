@@ -10,13 +10,16 @@ import org.springframework.stereotype.Repository;
 
 import com.baobaotao.domain.User;
 
+/**Spring注解定义DAO**/
 @Repository
 public class UserDao {
 	
+	/**自动注入jdbcTemplate**/
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 
+	/**获取应户名，密码匹配数**/
 	public int getMatchCount(String userName, String password) {
 		String sqlStr = " SELECT count(*) FROM t_user "
 				+ " WHERE user_name =? and password=? ";
@@ -39,6 +42,7 @@ public class UserDao {
 				+ " FROM t_user WHERE user_name =? ";
 		final User user = new User();
 		jdbcTemplate.query(sqlStr, new Object[] { userName },
+				/**查询结果的处理回调接口**/
 				new RowCallbackHandler() {
 					public void processRow(ResultSet rs) throws SQLException {
 						user.setUserId(rs.getInt("user_id"));

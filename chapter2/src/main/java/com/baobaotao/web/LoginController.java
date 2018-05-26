@@ -24,12 +24,17 @@ public class LoginController{
 		return "login";
 	}
 	
+	//TODO ModelAndView具体用法
+	//TODO LoginCommand是如何注入的
+	/**返回值是ModelAndView**/
 	@RequestMapping(value = "/loginCheck.html")
 	public ModelAndView loginCheck(HttpServletRequest request,LoginCommand loginCommand){
+		/**后台密码MD5值，前端上送验证码校验**/
 		boolean isValidUser = 
 			   userService.hasMatchUser(loginCommand.getUserName(),
 					                    loginCommand.getPassword());
 		if (!isValidUser) {
+			/**返回值放入模型中**/
 			return new ModelAndView("login", "error", "用户名或密码错误。");
 		} else {
 			User user = userService.findUserByUserName(loginCommand
@@ -37,7 +42,10 @@ public class LoginController{
 			user.setLastIp(request.getLocalAddr());
 			user.setLastVisit(new Date());
 			userService.loginSuccess(user);
-			request.getSession().setAttribute("user", user);
+			//TODO 返回值放入request请求中
+			/**user放入request与session有什么区别???**/
+			request.setAttribute("user", user);
+			//request.getSession().setAttribute("user", user);
 			return new ModelAndView("main");
 		}
 	}

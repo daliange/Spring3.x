@@ -3,6 +3,11 @@ package com.baobaotao.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 领域对象属于业务层
+ * 领域对象不一定等于数据库表
+ * 简单应用二者可以相等
+ * **/
 public class User implements Serializable{
 	private int userId;
 
