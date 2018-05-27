@@ -11,8 +11,8 @@
 	<groupId>com.lijie.spring</groupId>
 	<artifactId>spring3.x-chapter3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring3.x-chapter3</name>
-	<url>http://maven.apache.org</url>
+	<name>chapter3</name>
+	<packaging>war</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

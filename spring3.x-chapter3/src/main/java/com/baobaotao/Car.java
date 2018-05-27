@@ -7,6 +7,7 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+//TODO BeanFactoryAware??? BeanNameAware???
 public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 		DisposableBean {
 	private String brand;
@@ -25,7 +26,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 	}
 
 	public void setBrand(String brand) {
-		System.out.println("调用setBrand()设置属性。");
+		System.out.println("调用setBrand()设置属性。"+brand);
 		this.brand = brand;
 	}
 
@@ -46,6 +47,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 	}
 
 	public void setMaxSpeed(int maxSpeed) {
+		System.out.println("调用setMaxSpeed()设置属性。"+maxSpeed);
 		this.maxSpeed = maxSpeed;
 	}
 	
@@ -62,7 +64,7 @@ public class Car implements BeanFactoryAware, BeanNameAware, InitializingBean,
 
 	// BeanNameAware接口方法
 	public void setBeanName(String beanName) {
-		System.out.println("调用BeanNameAware.setBeanName()。");
+		System.out.println("调用BeanNameAware.setBeanName()。"+beanName);
 		this.beanName = beanName;
 	}
 
