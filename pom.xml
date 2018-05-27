@@ -107,5 +107,6 @@
 	</dependencies>
 	<modules>
 		<module>chapter2</module>
+		<module>spring3.x-chapter3</module>
 	</modules>
 </project>
