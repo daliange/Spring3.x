@@ -15,6 +15,7 @@
 		<property name="car" ref="car" />
 	</bean>
 
+	<!-- &是XML的特殊字符，需要使用&amp;进行转义 -->
 	<bean id="car" class="com.baobaotao.ditype.Car" 
 		p:brand="红旗&amp;CA72"
 		p:maxSpeed="200" 
@@ -29,11 +30,14 @@
 		p:price="20000.00" />
 
 
+	<!-- ref 有3个属性 bean、local、parent -->
 	<bean id="boss2" class="com.baobaotao.ditype.Boss">
 		<property name="name">
 			<value>John</value>
 		</property>
-		<property name="car" ref="car" />
+		<property name="car" >
+			<ref bean="car"></ref>
+		</property>
 	</bean>
 
 	<!--构造函数注入：type constructor-arg是没有顺序的 -->

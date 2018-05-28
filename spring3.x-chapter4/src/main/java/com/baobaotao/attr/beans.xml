@@ -3,6 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+         
+    <!-- &是XML的特殊字符，需要使用&amp;进行转义 -->
 	<bean id="car" class="com.baobaotao.attr.Car" lazy-init="default">
 		<property name="brand">
 			<value>
@@ -35,7 +37,7 @@
 	</bean>	
 	
 
-	<!-- 引用Bean -->
+	<!-- 引用Bean 集合类型属性list、set、map、props-->
 	<bean id="boss1" class="com.baobaotao.attr.Boss">
 		<property name="car" ref="car" />
 		<property name="favorites">
@@ -84,7 +86,7 @@
 		</property>
 	</bean>
 
-	<!-- 内部Bean -->
+	<!-- 内部Bean???不会被外部引用 -->
 	<bean id="boss2" class="com.baobaotao.attr.Boss">
 		<property name="car">
 			<bean class="com.baobaotao.attr.Car">

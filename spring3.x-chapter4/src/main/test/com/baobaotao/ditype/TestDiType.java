@@ -57,4 +57,9 @@ public class TestDiType extends TestCase {
 		assertNotNull(boss);
 		System.out.println("boss:"+boss);
 	}	
+	public void testBoss2(){
+		Boss boss2 = (Boss)factory.getBean("boss2");
+		assertNotNull(boss2);
+		System.out.println("boss2:"+boss2);
+	}	
 }

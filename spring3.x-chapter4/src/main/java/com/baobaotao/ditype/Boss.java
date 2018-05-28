@@ -38,6 +38,6 @@ public class Boss {
 	}
 
 	public String toString(){
-		return "name:"+name+"/car:"+car.getBrand()+"/office:"+office;
+		return "name:"+name+"。car:"+car.getBrand()+"。office:"+office;
 	}
 }

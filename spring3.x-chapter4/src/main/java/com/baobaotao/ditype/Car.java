@@ -49,7 +49,7 @@ public class Car {
 	}
 	
 	public String toString(){
-		return "brand:"+brand+"/maxSpeed:"+maxSpeed+"/price:"+price;
+		return "brand:"+brand+"。maxSpeed:"+maxSpeed+"。price:"+price;
 	}
 
 }

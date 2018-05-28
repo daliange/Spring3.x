@@ -1,0 +1,1 @@
+引用Bean 集合类型属性list、set、map、props
