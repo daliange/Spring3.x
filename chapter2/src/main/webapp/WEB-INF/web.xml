@@ -10,10 +10,21 @@
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<load-on-startup>2</load-on-startup>
 	</listener>
 
-	<!-- 配置spring的DispatcherServlet 
-		servlet名字匹配baobaotao-servlet.xml-->
+	<!-- log4j.properties如果在class目录下，不需要配置log4jConfigLocation
+	WebApplicationContext需要日志功能 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+		<load-on-startup>1</load-on-startup>
+	</listener>
+
+	<!-- 配置spring的DispatcherServlet servlet名字匹配baobaotao-servlet.xml -->
 	<servlet>
 		<servlet-name>baobaotao</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -21,9 +32,8 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>baobaotao</servlet-name>
-		<!-- 使用html使用户根据url无法了解后端技术，
-			静态页面使用htm，防止被servlet拦截 -->
+		<!-- 使用html使用户根据url无法了解后端技术， 静态页面使用htm，防止被servlet拦截 -->
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
-	
+
 </web-app>
