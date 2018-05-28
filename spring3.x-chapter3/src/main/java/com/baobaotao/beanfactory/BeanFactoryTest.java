@@ -2,6 +2,7 @@ package com.baobaotao.beanfactory;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -14,8 +15,19 @@ import com.baobaotao.Car;
  * **/
 public class BeanFactoryTest {
 	public static void main(String[] args) throws Throwable{
-	   ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-	   Resource res = resolver.getResource("classpath:com/baobaotao/beanfactory/beans.xml");
+		
+	   /**
+	    * Resource的几种加载方式
+	    * FileSystemResource
+	    * ClassPathResource
+	    * ResourcePatternResolver
+	    * EncodedResource
+	    * **/
+//	   ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+//	   Resource res = resolver.getResource("classpath:com/baobaotao/beanfactory/beans.xml");
+	   
+	   Resource res = new ClassPathResource("com/baobaotao/beanfactory/beans.xml");
+	   
 	   System.out.println("res.getURL()="+res.getURL());
        BeanFactory bf = new XmlBeanFactory(res);
        System.out.println("=====init BeanFactory.");

@@ -3,3 +3,12 @@ ClassPathResource：类目录加载
 ServletContextResource：web容器上下文
 FileSystemResource：文件目录加载
 Resource res1 = new ClassPathResource("file1.txt");
+
+
+   /**
+    * Resource的几种加载方式
+    * FileSystemResource
+    * ClassPathResource
+    * ResourcePatternResolver
+    * EncodedResource
+    * **/
