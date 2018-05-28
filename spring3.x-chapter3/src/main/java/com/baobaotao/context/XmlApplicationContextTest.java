@@ -6,6 +6,10 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.baobaotao.Car;
 
+/**
+ * ClassPathXmlApplicationContext
+ * FileSystemXmlApplicationContext
+ * **/
 public class XmlApplicationContextTest {
 
 	public static void main(String[] args) {
