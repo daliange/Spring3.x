@@ -13,7 +13,14 @@ public class TestBeanAttrDI  extends TestCase{
 	private static String[] CONFIG_FILES = { "com/baobaotao/attr/beans.xml" };
 
 	public void setUp() throws Exception {
+		System.out.println("=====>测试前初始化工作");
 		factory = new ClassPathXmlApplicationContext(CONFIG_FILES);
+	}
+	
+	@Override
+	protected void tearDown() throws Exception {
+		System.out.println("<=====测试结束工作");
+		super.tearDown();
 	}
 
 	public void testBeanRetrieveCar() {

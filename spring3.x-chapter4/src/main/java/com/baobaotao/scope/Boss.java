@@ -18,8 +18,8 @@ public class Boss {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Override
-    public String toString() {
-    	return "name:"+name+"\n car:"+car;
-    }
+//	@Override
+//    public String toString() {
+//    	return "name:"+name+"\n car:"+car;
+//    }
 }
