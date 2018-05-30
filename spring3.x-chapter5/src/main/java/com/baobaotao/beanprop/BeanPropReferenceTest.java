@@ -14,7 +14,7 @@ public class BeanPropReferenceTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(resourceFile);
 		DataSource ds = ctx.getBean(DataSource.class);
 		Connection conn = ds.getConnection();
-		System.out.println("conn is not null:"+(conn!=null));
+		System.out.println("conn is not null:"+(conn));
 		
 	}
 }
