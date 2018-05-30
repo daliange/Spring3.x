@@ -15,7 +15,9 @@ public class DESUtils {
 	static {
 		try {
 			KeyGenerator generator = KeyGenerator.getInstance("DES");
-			generator.init(new SecureRandom(KEY_STR.getBytes()));
+			SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+	        random.setSeed(KEY_STR.getBytes());
+			generator.init(random);
 			key = generator.generateKey();
 			generator = null;
 		} catch (Exception e) {
@@ -63,14 +65,8 @@ public class DESUtils {
 	}
 
 	public static void main(String[] args) throws Exception {
-//		if (args == null || args.length < 1) {
-//			System.out.println("请输入要加密的字符，用空格分隔.");
-//		} else {
-//			for (String arg : args) {
-//				System.out.println(arg + ":" + getEncryptString(arg));
-//			}
-//		}
-		
+		System.out.println(getEncryptString("root"));
+		System.out.println(getEncryptString("1234"));
 		System.out.println(getDecryptString("WnplV/ietfQ="));
 		System.out.println(getDecryptString("gJQ9O+q34qk="));
 	}
