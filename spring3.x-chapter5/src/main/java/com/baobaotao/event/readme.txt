@@ -1,0 +1,4 @@
+实现ApplicationContext监听器：
+MailSender implements ApplicationContextAware
+MailSendEvent extends ApplicationContextEvent
+MailSendListener implements ApplicationListener<MailSendEvent>
