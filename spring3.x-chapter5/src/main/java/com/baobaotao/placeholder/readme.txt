@@ -1,1 +1,6 @@
-DESUtils进行DES加密、解密
+1、DESUtils进行DES加密、解密
+
+2、传统引用属性文件
+org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
+3、加密引用属性文件
+com.baobaotao.placeholder.EncryptPropertyPlaceholderConfigurer
