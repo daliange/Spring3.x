@@ -130,5 +130,6 @@
 		<module>spring3.x-chapter3</module>
 		<module>spring3.x-chapter4</module>
     <module>spring3.x-chapter5</module>
+    <module>spring3.x-chapter6</module>
   </modules>
 </project>
