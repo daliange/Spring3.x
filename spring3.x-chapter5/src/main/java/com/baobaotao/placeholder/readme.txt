@@ -4,3 +4,5 @@
 org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
 3、加密引用属性文件
 com.baobaotao.placeholder.EncryptPropertyPlaceholderConfigurer
+
+重写convertProperty方法

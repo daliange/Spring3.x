@@ -8,8 +8,8 @@ public class ApplicatonEventTest {
 	public static void main(String[] args) {
 		String resourceFile = "com/baobaotao/event/beans.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(resourceFile);	
-		MailSender mailSender = ctx.getBean(MailSender.class);
-		mailSender.sendMail("test mail.");
+		MailSender mailSender = ctx.getBean("mailSender",MailSender.class);
+		mailSender.sendMail("li.jie");
 	    System.out.println("done.");
 	}
 }

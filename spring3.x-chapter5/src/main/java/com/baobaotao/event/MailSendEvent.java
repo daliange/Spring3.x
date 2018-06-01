@@ -4,14 +4,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.ApplicationContextEvent;
 
 public class MailSendEvent extends ApplicationContextEvent {
-	private String to;
+	private String msg;
 	
-	public MailSendEvent(ApplicationContext source, String to) {
+	public MailSendEvent(ApplicationContext source, String msg) {
 		super(source);
-		this.to = to;
+		this.msg = msg;
 	}
-	public String getTo() {
-		
-		return this.to;
+	public String getMsg() {
+		return this.msg;
 	}
 }
