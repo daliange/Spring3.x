@@ -3,9 +3,12 @@ package com.baobaotao.introduce;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.support.DelegatingIntroductionInterceptor;
 public class ControllablePerformaceMonitor
-		extends
-			DelegatingIntroductionInterceptor implements Monitorable, Testable {
+		extends DelegatingIntroductionInterceptor 
+		implements Monitorable, Testable {
+	
+	/**为了保证单实例的线程安全**/
 	private ThreadLocal<Boolean> MonitorStatusMap = new ThreadLocal<Boolean>();
+	
 	public void setMonitorActive(boolean active) {
 		MonitorStatusMap.set(active);
 	}

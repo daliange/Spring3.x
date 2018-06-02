@@ -11,6 +11,8 @@ public class TestIntroduce {
         ForumService forumService = (ForumService)ctx.getBean("forumService");
         forumService.removeForum(10);
         forumService.removeTopic(1022);
+        
+        /**开启性能监控**/
         Monitorable moniterable = (Monitorable)forumService;
         moniterable.setMonitorActive(true);
         forumService.removeForum(10);

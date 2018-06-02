@@ -6,6 +6,8 @@
 
 	<bean id="pmonitor" class="com.baobaotao.introduce.ControllablePerformaceMonitor" />
 	<bean id="forumServiceTarget" class="com.baobaotao.introduce.ForumService" />
+	
+	
 	<bean id="forumService" class="org.springframework.aop.framework.ProxyFactoryBean"
 		p:interfaces="com.baobaotao.introduce.Monitorable" 
 		p:target-ref="forumServiceTarget"
