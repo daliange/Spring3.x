@@ -7,7 +7,7 @@ public class TestThrowAdvice {
 	public static void main(String[] args) {
 		String configPath = "com/baobaotao/advice/beans.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
-		ForumService forumService = (ForumService)ctx.getBean("forumService");
+		ForumService forumService = (ForumService)ctx.getBean("forumServiceProxy");
 		
 		try{
 			forumService.removeForum(10);

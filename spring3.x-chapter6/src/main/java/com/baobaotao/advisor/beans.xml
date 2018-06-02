@@ -11,17 +11,22 @@
 	<bean id="waiterTarget" class="com.baobaotao.advisor.Waiter" />
 	<bean id="sellerTarget" class="com.baobaotao.advisor.Seller" />
 	<bean id="greetingAdvice" class="com.baobaotao.advisor.GreetingBeforeAdvice" />
+	
+	<!-- 定义一个切面，向切面注入前置增强 -->
 	<bean id="greetingAdvisor" class="com.baobaotao.advisor.GreetingAdvisor"
 		p:advice-ref="greetingAdvice" />
 
+	<!-- 通过父bean定义共同信息 -->
 	<bean id="parent" abstract="true"
 		class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:interceptorNames="greetingAdvisor" p:proxyTargetClass="true" />
+		p:interceptorNames="greetingAdvisor" 
+		p:proxyTargetClass="true" />
+		
 	<bean id="waiter" parent="parent" p:target-ref="waiterTarget" />
 	<bean id="seller" parent="parent" p:target-ref="sellerTarget" />
 
 
-	<!-- 正则表达式方法名匹配切面 -->
+	<!-- 定义一个切面，正则表达式方法名匹配切面 -->
 	<bean id="regexpAdvisor"
 		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
 		p:advice-ref="greetingAdvice">
@@ -31,8 +36,10 @@
 			</list>
 		</property>
 	</bean>
+	<!-- 定义一个代理类 -->
 	<bean id="waiter1" class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:interceptorNames="regexpAdvisor" p:target-ref="waiterTarget"
+		p:interceptorNames="regexpAdvisor" 
+		p:target-ref="waiterTarget"
 		p:proxyTargetClass="true" />
 
 

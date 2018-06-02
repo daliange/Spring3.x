@@ -14,7 +14,7 @@
 	<!-- 使用p:proxyTargetClass，将使用Cglib代理，
 	无需设置p:proxyInterfaces="com.baobaotao.advice.Waiter"  
 	单例模式singleton最好使用Cglib代理，创建代理速度慢，运行效率高-->
-	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
 		p:target-ref="naiveWaiterTarget"
 		p:interceptorNames="greetingBefore,greetingAfter,greetingAround"
 		p:proxyTargetClass = "true"/>
@@ -35,7 +35,7 @@
 	<bean id="forumServiceTarget" class="com.baobaotao.advice.ForumService" />
 	<bean id="transactionManagerThrowsAdvice" class="com.baobaotao.advice.TransactionManagerThrowsAdvice" />
 	
-	<bean id="forumService" class="org.springframework.aop.framework.ProxyFactoryBean"
+	<bean id="forumServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
 	  p:interceptorNames="transactionManagerThrowsAdvice"
 	  p:target-ref="forumServiceTarget"
 	  p:proxyTargetClass="true"/>

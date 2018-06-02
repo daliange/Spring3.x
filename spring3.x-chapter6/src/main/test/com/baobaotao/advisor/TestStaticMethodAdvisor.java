@@ -11,7 +11,10 @@ public class TestStaticMethodAdvisor {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
 		Waiter waiter = (Waiter)ctx.getBean("waiter");
 		Seller seller = (Seller)ctx.getBean("seller");
+		
+		/**只有该方法匹配切面信息**/
 		waiter.greetTo("John");
+		
 		waiter.serveTo("John");
 		seller.greetTo("John");	
 	}
