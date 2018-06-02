@@ -8,7 +8,10 @@ public class TestRegexpAdvisor {
 		String configPath = "com/baobaotao/advisor/beans.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
 		Waiter waiter = (Waiter)ctx.getBean("waiter1");
+		Seller seller = (Seller)ctx.getBean("seller1");
 		waiter.greetTo("John");
-		waiter.serveTo("John");
+		waiter.serveTo("Lucy");
+		
+		seller.greetTo("Jack");
 	}
 }

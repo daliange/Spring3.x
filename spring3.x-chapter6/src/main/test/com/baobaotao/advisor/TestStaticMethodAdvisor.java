@@ -15,7 +15,7 @@ public class TestStaticMethodAdvisor {
 		/**只有该方法匹配切面信息**/
 		waiter.greetTo("John");
 		
-		waiter.serveTo("John");
-		seller.greetTo("John");	
+		waiter.serveTo("Jack");
+		seller.greetTo("lucy");	
 	}
 }
