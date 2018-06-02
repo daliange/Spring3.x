@@ -63,7 +63,8 @@
 
 
 	<bean id="waiter2" class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:interceptorNames="dynamicAdvisor" p:target-ref="waiterTarget"
+		p:interceptorNames="dynamicAdvisor" 
+		p:target-ref="waiterTarget"
 		p:proxyTargetClass="true" />
 
 	<!-- 控制流程切面 -->
@@ -73,17 +74,24 @@
 		<constructor-arg type="java.lang.String" value="service" />
 	</bean>
 	<bean id="controlFlowAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
-		p:pointcut-ref="controlFlowPointcut" p:advice-ref="greetingAdvice" />
+		p:pointcut-ref="controlFlowPointcut" 
+		p:advice-ref="greetingAdvice" />
 	<bean id="waiter3" class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:interceptorNames="controlFlowAdvisor" p:target-ref="waiterTarget"
+		p:interceptorNames="controlFlowAdvisor" 
+		p:target-ref="waiterTarget"
 		p:proxyTargetClass="true" />
 
 	<!-- 复合切点切面 -->
 	<bean id="gcp" class="com.baobaotao.advisor.GreetingComposablePointcut" />
-	<bean id="composableAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
-		p:pointcut="#{gcp.intersectionPointcut}" p:advice-ref="greetingAdvice" />
+	
+	<bean id="composableAdvisor" 
+		class="org.springframework.aop.support.DefaultPointcutAdvisor"
+		p:pointcut="#{gcp.intersectionPointcut}" 
+		p:advice-ref="greetingAdvice" />
+		
 	<bean id="waiter4" class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:interceptorNames="composableAdvisor" p:target-ref="waiterTarget"
+		p:interceptorNames="composableAdvisor" 
+		p:target-ref="waiterTarget"
 		p:proxyTargetClass="true" />
 
 	<!--引入切面-->
@@ -93,7 +101,9 @@
 			<bean class="com.baobaotao.introduce.ControllablePerformaceMonitor" />
 		</constructor-arg>
 	</bean>
+	
 	<bean id="forumServiceTarget" class="com.baobaotao.introduce.ForumService" />
+	
 	<bean id="forumService" class="org.springframework.aop.framework.ProxyFactoryBean"
 	      p:interceptorNames="introduceAdvisor"
 	      p:target-ref="forumServiceTarget"
