@@ -8,6 +8,8 @@ public class PerformaceHandler implements InvocationHandler {
 	public PerformaceHandler(Object target){
 		this.target = target;
 	}
+	
+	/**实现目标业务的所有接口**/
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 		PerformanceMonitor.begin(target.getClass().getName()+"."+ method.getName());
@@ -15,4 +17,7 @@ public class PerformaceHandler implements InvocationHandler {
 		PerformanceMonitor.end();
 		return obj;
 	}
+	
+
+
 }

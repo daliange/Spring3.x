@@ -1,7 +1,10 @@
 package com.baobaotao.proxy;
 
 public class PerformanceMonitor {
+	
+	/**通过ThreadLocal保存调用线程相关的性能监控信息**/
 	private static ThreadLocal<MethodPerformace> performaceRecord = new ThreadLocal<MethodPerformace>();
+	
 	public static void begin(String method) {
 		System.out.println("begin monitor...");
 		MethodPerformace mp = performaceRecord.get();
