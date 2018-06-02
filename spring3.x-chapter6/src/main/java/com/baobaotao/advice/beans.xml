@@ -6,38 +6,37 @@
 
 	<bean id="greetingBefore" class="com.baobaotao.advice.GreetingBeforeAdvice" />
 	<bean id="greetingAfter" class="com.baobaotao.advice.GreetingAfterAdvice" />
-	<bean id="greetingAdvice" class="com.baobaotao.advice.GreetingBeforeAdvice" />
 	<bean id="greetingAround" class="com.baobaotao.advice.GreetingInterceptor" />
-	<bean id="target" class="com.baobaotao.advice.NaiveWaiter" />
-
-
+	
+	<bean id="naiveWaiterTarget" class="com.baobaotao.advice.NaiveWaiter" />
+	
 	<!--1. greetingAdvice -->
-	<!--
-		bean id="waiter"
-		class="org.springframework.aop.framework.ProxyFactoryBean"
-		p:proxyInterfaces="com.baobaotao.advice.Waiter" p:target-ref="target"
-		p:interceptorNames="greetingAdvice"/
-	-->
-
+	<!-- 使用p:proxyTargetClass，将使用Cglib代理，
+	无需设置p:proxyInterfaces="com.baobaotao.advice.Waiter"  
+	单例模式singleton最好使用Cglib代理，创建代理速度慢，运行效率高-->
+	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:target-ref="naiveWaiterTarget"
+		p:interceptorNames="greetingBefore,greetingAfter,greetingAround"
+		p:proxyTargetClass = "true"/>
 
 	<!--2. before and after advice -->
-	<!--
-		bean id="waiter"
+	<!--bean id="waiter"
 		class="org.springframework.aop.framework.ProxyFactoryBean"
 		p:proxyInterfaces="com.baobaotao.advice.Waiter" p:target-ref="target"
-		p:interceptorNames="greetingBefore,greetingAfter"/
-	-->
+		p:interceptorNames="greetingBefore,greetingAfter"/-->
+		
     <!--3. around advice -->
-	<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+	<!-- bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
 		p:proxyInterfaces="com.baobaotao.advice.Waiter" p:target-ref="target"
-		p:interceptorNames="greetingAround" />
+		p:interceptorNames="greetingAround" /-->
 
 
 	<!--4. 异常抛出增强  -->
 	<bean id="forumServiceTarget" class="com.baobaotao.advice.ForumService" />
-	<bean id="transactionManager" class="com.baobaotao.advice.TransactionManager" />
+	<bean id="transactionManagerThrowsAdvice" class="com.baobaotao.advice.TransactionManagerThrowsAdvice" />
+	
 	<bean id="forumService" class="org.springframework.aop.framework.ProxyFactoryBean"
-	  p:interceptorNames="transactionManager"
+	  p:interceptorNames="transactionManagerThrowsAdvice"
 	  p:target-ref="forumServiceTarget"
 	  p:proxyTargetClass="true"/>
 

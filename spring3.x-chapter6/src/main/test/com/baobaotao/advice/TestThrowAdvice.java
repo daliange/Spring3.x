@@ -11,10 +11,14 @@ public class TestThrowAdvice {
 		
 		try{
 			forumService.removeForum(10);
-		} catch (Exception e) {}		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 		
 		try{
 			forumService.updateForum(new Forum());
-		} catch (Exception e) {}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
 	}
 }
