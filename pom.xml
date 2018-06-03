@@ -116,6 +116,12 @@
 			<version>3.2.1.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -132,5 +138,6 @@
     <module>spring3.x-chapter5</module>
     <module>spring3.x-chapter6</module>
     <module>spring3.x-chapter7</module>
-  </modules>
+    <module>spring3.x-chapter9</module>
+	</modules>
 </project>
