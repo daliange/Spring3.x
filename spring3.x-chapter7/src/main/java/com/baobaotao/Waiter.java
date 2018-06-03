@@ -1,9 +1,9 @@
 package com.baobaotao;
 
-import com.baobaotao.anno.NeedTest;
+import com.baobaotao.anno.NeedTestAnno;
 
 public interface Waiter {
-	@NeedTest
+	@NeedTestAnno
 	public void greetTo(String clientName);	
 	public void serveTo(String clientName);
 }

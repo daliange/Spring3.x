@@ -1,6 +1,6 @@
 package com.baobaotao;
 
-import com.baobaotao.anno.NeedTest;
+import com.baobaotao.anno.NeedTestAnno;
 
 public class NaughtyWaiter implements Waiter {
 	public void greetTo(String clientName) {
