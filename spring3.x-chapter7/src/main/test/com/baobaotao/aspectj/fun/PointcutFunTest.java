@@ -14,11 +14,11 @@ public class PointcutFunTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
 		Waiter naiveWaiter = (Waiter) ctx.getBean("naiveWaiter");
 		Waiter naughtyWaiter = (Waiter) ctx.getBean("naughtyWaiter");
-//		naiveWaiter.greetTo("John");
-//		naiveWaiter.serveTo("John");
-//		naughtyWaiter.greetTo("Tom");
-//		naughtyWaiter.serveTo("Tom");
-		((NaughtyWaiter)naughtyWaiter).joke("Tom", 1);
+		naiveWaiter.greetTo("John");
+		naiveWaiter.serveTo("John");
+		naughtyWaiter.greetTo("Tom");
+		naughtyWaiter.serveTo("Tom");
+//		((NaughtyWaiter)naughtyWaiter).joke("Tom", 1);
 
 		
 		//-----@args test------//

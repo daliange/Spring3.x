@@ -28,14 +28,14 @@ public class TestAspect implements Ordered{
 //    	System.out.println("allChildClassFun() executed!");
 //    }
 //	@Before("execution(* joke(Object,int)))")
-	@Before("args(Object,*)")
-    public void jokeFun(){
-    	System.out.println("jokeFun() executed!");
-    }
-//    @AfterReturning("@annotation(com.baobaotao.anno.NeedTest)")
-//    public void atAnnotaionTest(){
-//    	System.out.println("atAnnotaionTest() executed!");
+//	@Before("args(Object,*)")
+//    public void jokeFun(){
+//    	System.out.println("jokeFun() executed!");
 //    }
+    @AfterReturning("@annotation(com.baobaotao.anno.NeedTestAnno)")
+    public void atAnnotaionTest(){
+    	System.out.println("atAnnotaionTest() executed!");
+    }
 //    @AfterReturning("args(String)")
 //    public void argsTest(){
 //    	System.out.println("argsTest() executed!");
@@ -52,10 +52,10 @@ public class TestAspect implements Ordered{
 //	public void atWithinTest() {
 //		System.out.println("atWithinTest() executed!");
 //	} 
-	@AfterReturning("this(com.baobaotao.Seller)")
-	public void thisTest(){
-		System.out.println("thisTest() executed!");
-	}
+//	@AfterReturning("this(com.baobaotao.Seller)")
+//	public void thisTest(){
+//		System.out.println("thisTest() executed!");
+//	}
 	public int getOrder() {
 		// TODO Auto-generated method stub
 		return 1;
