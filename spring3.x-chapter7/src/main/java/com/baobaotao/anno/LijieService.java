@@ -8,7 +8,7 @@ public class LijieService {
 		return "eat";
 	}
 	
-	@LijieAnnot(LijieEnum.B)
+	@LijieAnnot({LijieEnum.B,LijieEnum.C})
 	public String learn() {
 		System.out.println("------------learn");
 		return "learn";
