@@ -14,6 +14,7 @@ public class TestBeanNameAutoProxyCreator {
 		Seller seller = (Seller) ctx.getBean("seller");
 		waiter.serveTo("John");
 		waiter.greetTo("John");
+		
 		seller.greetTo("Tom");
 	}
 }

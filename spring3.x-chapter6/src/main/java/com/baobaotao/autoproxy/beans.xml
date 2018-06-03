@@ -8,17 +8,18 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="greetingAdvice" class="com.baobaotao.advisor.GreetingBeforeAdvice" />
 	<!-- 通过Bean名称自动创建代理 -->
 	<!--
-		<bean
-		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"
-		p:beanNames="*er" p:interceptorNames="greetingAdvice"
-		p:optimize="true"/>
-	-->
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"
+		p:beanNames="*er" 
+		p:interceptorNames="greetingAdvice"
+		p:optimize="true"/>-->
+	
 
 
 	<!--通过Advisor自动创建代理-->
 	<bean id="regexpAdvisor"
 		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
-		p:patterns=".*greet.*" p:advice-ref="greetingAdvice" />
-	<bean
-		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+		p:patterns=".*greet.*" 
+		p:advice-ref="greetingAdvice" />
+		
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
 </beans>
