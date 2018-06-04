@@ -14,13 +14,16 @@ import com.baobaotao.service.BbtForum;
 
 @Transactional
 public class BbtForumImpl implements BbtForum {
+	
 	private ForumDao forumDao;
 	private TopicDao topicDao;
 	private PostDao postDao;
+	
+	
 	public void addTopic(Topic topic) throws Exception {
 		topicDao.addTopic(topic);
-//		if(true) throw new PessimisticLockingFailureException("fail");
 		postDao.addPost(topic.getPost());
+		if(true) throw new PessimisticLockingFailureException("fail");
 	}
 	@Transactional(readOnly=true)
 	public Forum getForum(int forumId) {
@@ -32,6 +35,7 @@ public class BbtForumImpl implements BbtForum {
 	public int getForumNum() {
 		return forumDao.getForumNum();
 	}
+	
 	
 	public void setForumDao(ForumDao forumDao) {
 		this.forumDao = forumDao;

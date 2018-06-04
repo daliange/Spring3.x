@@ -6,12 +6,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.baobaotao.domain.Post;
 import com.baobaotao.domain.Topic;
 
-public class TestBbtForumPfb{
+public class TestBbtForumProxyfactorybean{
 
 	public static void main(String[] args) throws Throwable{
 		
-		String configPath = "classpath:applicationContext-pfb.xml";
+		String configPath = "classpath:applicationContext-proxyfactorybean.xml";
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
+		/**实际获取的是代理类，TransactionProxyFactoryBean**/
 		BbtForum bbtForum = ctx.getBean("bbtForum",BbtForum.class);
 				
     	System.out.println("begin........");

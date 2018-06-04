@@ -29,7 +29,7 @@
 		<property name="transactionAttributes">
 			<props>
 				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="*">PROPAGATION_REQUIRED,-tion</prop>
+				<prop key="*">PROPAGATION_REQUIRED,+tion</prop>
 			</props>
 		</property>
 	</bean>
