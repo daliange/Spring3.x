@@ -22,8 +22,8 @@ public class BbtForumImpl implements BbtForum {
 	
 	public void addTopic(Topic topic) throws Exception {
 		topicDao.addTopic(topic);
-		postDao.addPost(topic.getPost());
 		if(true) throw new PessimisticLockingFailureException("fail");
+		postDao.addPost(topic.getPost());
 	}
 	@Transactional(readOnly=true)
 	public Forum getForum(int forumId) {

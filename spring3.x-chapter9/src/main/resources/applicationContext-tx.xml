@@ -25,10 +25,10 @@
 		<aop:advisor pointcut-ref="serviceMethod"
 			advice-ref="txAdvice" />
 	</aop:config>
-	<tx:advice id="txAdvice" >
+	<tx:advice id="txAdvice"  transaction-manager="transactionManager">
         <tx:attributes> 
             <tx:method name="get*" read-only="false"/>
-            <tx:method name="add*" rollback-for="PessimisticLockingFailureException"/>
+            <tx:method name="add*" no-rollback-for="PessimisticLockingFailureException"/>
             <tx:method name="update*"/>         
         </tx:attributes>
     </tx:advice>
