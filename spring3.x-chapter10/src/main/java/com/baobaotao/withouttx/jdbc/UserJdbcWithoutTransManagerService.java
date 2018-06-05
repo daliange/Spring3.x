@@ -32,6 +32,7 @@ public class UserJdbcWithoutTransManagerService {
         JdbcTemplate jdbcTemplate = (JdbcTemplate)ctx.getBean("jdbcTemplate");
         BasicDataSource basicDataSource = (BasicDataSource)jdbcTemplate.getDataSource();
         //检查数据源autoCommit的设置
+        //basicDataSource.setDefaultAutoCommit(false);
         System.out.println("autoCommit:"+ basicDataSource.getDefaultAutoCommit());
         //插入一条记录，初始分数为10
         jdbcTemplate.execute("INSERT INTO t_user(user_name,password,score,last_logon_time) VALUES('tom','123456',10,"+System.currentTimeMillis()+")");
