@@ -15,6 +15,7 @@ public class MixLayerUserService {
     @RequestMapping("/logon.do")  
     @Transactional
     public String logon(String userName,String password){
+    	userName = "tom";
         if(isRightUser(userName,password)){
             String sql = "UPDATE t_user u SET u.score = u.score + ? WHERE user_name =?";
             jdbcTemplate.update(sql,20,userName);

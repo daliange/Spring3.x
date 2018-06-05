@@ -25,6 +25,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-hibernate</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-dao</artifactId>
+				</exclusion>
+			</exclusions>
 			<version>1.2.9</version>
 		</dependency>
 
