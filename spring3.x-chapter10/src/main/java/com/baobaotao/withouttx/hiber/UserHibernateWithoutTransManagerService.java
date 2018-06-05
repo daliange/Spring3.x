@@ -44,6 +44,7 @@ public class UserHibernateWithoutTransManagerService {
         BasicDataSource basicDataSource = (BasicDataSource)jdbcTemplate.getDataSource();
 
         //①检查数据源autoCommit的设置
+        basicDataSource.setDefaultAutoCommit(false);
         System.out.println("autoCommit:"+ basicDataSource.getDefaultAutoCommit());
 
         //②插入一条记录，初始分数为10
