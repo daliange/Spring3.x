@@ -20,9 +20,9 @@ public class UserService extends BaseService {
     private ScoreService scoreService;
 
     public void logon(String userName) {
-        System.out.println("before userService.updateLastLogonTime method...");
+        System.out.println("----------before userService.updateLastLogonTime method...");
         updateLastLogonTime(userName);
-        System.out.println("after userService.updateLastLogonTime method...");
+        System.out.println("----------after userService.updateLastLogonTime method...");
 
 //      scoreService.addScore(userName, 20);
         Thread myThread = new MyThread(this.scoreService, userName, 20);//使用一个新线程运行
@@ -50,9 +50,9 @@ public class UserService extends BaseService {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("before scoreService.addScor method...");
+            System.out.println("----------before scoreService.addScor method...");
             scoreService.addScore(userName, toAdd);
-            System.out.println("after scoreService.addScor method...");
+            System.out.println("----------after scoreService.addScor method...");
         }
     }
 
@@ -66,9 +66,9 @@ public class UserService extends BaseService {
 
 
         //调用工作在无事务环境下的服务类方法,将分数添加20分
-        System.out.println("before userService.logon method...");
+        System.out.println("----------before userService.logon method...");
         service.logon("tom");
-        System.out.println("after userService.logon method...");
+        System.out.println("----------after userService.logon method...");
         jdbcTemplate.execute("DELETE FROM t_user WHERE user_name='tom'");
 
         try {

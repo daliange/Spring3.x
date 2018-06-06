@@ -22,15 +22,20 @@ public class JdbcUserService {
     
     @Transactional
     public void logon(String userName) {
+    	Connection conn = null;
         try {
-//            Connection conn = jdbcTemplate.getDataSource().getConnection();
-            Connection conn = DataSourceUtils.getConnection(jdbcTemplate.getDataSource());
+        	/**非自动回收线程**/
+            //conn = jdbcTemplate.getDataSource().getConnection();
+        	/**自动回收线程**/
+            conn = DataSourceUtils.getConnection(jdbcTemplate.getDataSource());
             
             String sql = "UPDATE t_user SET last_logon_time=? WHERE user_name =?";
             jdbcTemplate.update(sql, System.currentTimeMillis(), userName);
             Thread.sleep(1000);//②模拟程序代码的执行时间
         } catch (Exception e) {
             e.printStackTrace();
+        }finally{
+        	DataSourceUtils.releaseConnection(conn, jdbcTemplate.getDataSource());
         }
 
     }
@@ -50,7 +55,7 @@ public class JdbcUserService {
     }
 
     public static void reportConn(BasicDataSource basicDataSource) {
-        System.out.println("连接数[active:idle]-[" +
+        System.out.println("连接数[inti:active:idle]-[" +basicDataSource.getInitialSize()+":"+
                        basicDataSource.getNumActive()+":"+basicDataSource.getNumIdle()+"]");
     }
 
