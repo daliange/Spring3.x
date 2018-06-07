@@ -69,6 +69,7 @@ public class ForumDao {
 				return ps;
 			}
 		}, keyHolder);
+		/**获取自增主键**/
 		forum.setForumId(keyHolder.getKey().intValue());
 	}
 

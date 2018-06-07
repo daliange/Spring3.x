@@ -16,38 +16,6 @@
 	<url>http://maven.apache.org</url>
 	<dependencies>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-hibernate</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-dao</artifactId>
-				</exclusion>
-			</exclusions>
-			<version>1.2.9</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.6.10.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.6-Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.19.0-GA</version>
-		</dependency>
-
-
-
 	</dependencies>
 	<build>
 		<finalName>spring3.x-chapter10</finalName>
