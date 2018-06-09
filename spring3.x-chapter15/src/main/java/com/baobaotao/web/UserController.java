@@ -122,6 +122,9 @@ public class UserController {
 	public String handle1(@RequestParam("userName") String userName,
 			@RequestParam("password") String password,
 			@RequestParam("realName") String realName) {
+		System.out.println("userName="+userName);
+		System.out.println("password="+password);
+		System.out.println("realName="+realName);
 		return "success";
 	}
 

@@ -1,6 +1,7 @@
 package com.baobaotao.web;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.Collections;
 import java.util.Date;
 
@@ -26,22 +27,28 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 public class UserControllerTest {
 
-//    @Test
-	public void testhandle41() {
+	/**需要学会用RestTemplate、MultiValueMap进行url测试**/
+    @Test
+	public void testhandle1() {
+    	/**
+    	 * MultiValueMap
+    	 * RestTemplate
+    	 * **/
 		RestTemplate restTemplate = new RestTemplate();
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
 		form.add("userName", "tom");
 		form.add("password", "123456");
-		form.add("age", "45");
-		restTemplate.postForLocation(
-				"http://localhost:8080/chapter15/user/handle41.html",form);
+		form.add("realName", "45");
+		URI uri =restTemplate.postForLocation(
+				"http://localhost:8080/spring3.x-chapter15/user/handle1",form);
+		System.out.println(uri);
 	}
 	
 //	@Test
 	public void testhandle42() throws IOException{
 		RestTemplate restTemplate = new RestTemplate();
 		byte[] response = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle42/{itemId}.html",null,byte[].class,"1233");
+				"http://localhost:8080/spring3.x-chapter15/user/handle42/{itemId}.html",null,byte[].class,"1233");
 		Resource outFile = new FileSystemResource("d:/image_copy.jpg");
 		FileCopyUtils.copy(response, outFile.getFile());
 	}	
@@ -54,14 +61,14 @@ public class UserControllerTest {
 		form.add("password", "123456");
 		form.add("age", "45");
 		restTemplate.postForLocation(
-				"http://localhost:8080/chapter15/user/handle43.html",form);
+				"http://localhost:8080/spring3.x-chapter15/user/handle43.html",form);
 	}
 
 //    @Test
 	public void testhandle44() throws IOException{
 		RestTemplate restTemplate = new RestTemplate();
 		byte[] response = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle44/{itemId}.html",null,byte[].class,"1233");
+				"http://localhost:8080/spring3.x-chapter15/user/handle44/{itemId}.html",null,byte[].class,"1233");
 		Resource outFile = new FileSystemResource("d:/image_copy.jpg");
 		FileCopyUtils.copy(response, outFile.getFile());
 	}
@@ -83,7 +90,7 @@ public class UserControllerTest {
 
 			
 		ResponseEntity<User> responseEntity = restTemplate.exchange(
-			   "http://localhost:8080/chapter15/user/handle51.html",
+			   "http://localhost:8080/spring3.x-chapter15/user/handle51.html",
 			   HttpMethod.POST,requestEntity,User.class);
 		
 		User responseUser = responseEntity.getBody(); 
@@ -132,7 +139,7 @@ public class UserControllerTest {
 
 			
 		ResponseEntity<User> responseEntity = restTemplate.exchange(
-			 "http://localhost:8080/chapter15/user/handle51.html",
+			 "http://localhost:8080/spring3.x-chapter15/user/handle51.html",
 			 HttpMethod.POST,requestEntity,User.class);
 		
 		User responseUser = responseEntity.getBody(); 
@@ -149,7 +156,7 @@ public class UserControllerTest {
 		form.add("password", "123456");
 		form.add("age", "45");
 		String html = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle61.html",form,String.class);
+				"http://localhost:8080/spring3.x-chapter15/user/handle61.html",form,String.class);
 		Assert.assertNotNull(html);
 		Assert.assertTrue(html.indexOf("1000")>-1);
 	}
@@ -158,7 +165,7 @@ public class UserControllerTest {
 	public void testhandle62() {
 		RestTemplate restTemplate = new RestTemplate();
 		String html = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle62.html",null,String.class);
+				"http://localhost:8080/spring3.x-chapter15/user/handle62.html",null,String.class);
 		Assert.assertNotNull(html);
 		Assert.assertTrue(html.indexOf("1001")>-1);
 	}	
@@ -168,7 +175,7 @@ public class UserControllerTest {
 	public void testhandle63() {
 		RestTemplate restTemplate = new RestTemplate();
 		String html = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle63.html",null,String.class);
+				"http://localhost:8080/spring3.x-chapter15/user/handle63.html",null,String.class);
 		Assert.assertNotNull(html);
 		Assert.assertTrue(html.indexOf("1001")>-1);
 	}
@@ -180,7 +187,7 @@ public class UserControllerTest {
 		form.add("userName", "tom");
 		form.add("password", "123456");
 		form.add("age", "45");
-		restTemplate.postForLocation("http://localhost:8080/chapter15/user/handle71.html", form);
+		restTemplate.postForLocation("http://localhost:8080/spring3.x-chapter15/user/handle71.html", form);
 	}	
 	
 //	@Test
@@ -189,7 +196,7 @@ public class UserControllerTest {
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
 		form.add("user", "tom:123456:tomson");		
 		String html = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle81.html",form,String.class);
+				"http://localhost:8080/spring3.x-chapter15/user/handle81.html",form,String.class);
 		Assert.assertNotNull(html);
 		Assert.assertTrue(html.indexOf("tom")>-1);
 	}
@@ -204,12 +211,12 @@ public class UserControllerTest {
 		form.add("birthday", "1980-01-01");
 		form.add("salary", "4,500.00");
 		String html = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle82.html",form,String.class);
+				"http://localhost:8080/spring3.x-chapter15/user/handle82.html",form,String.class);
 		Assert.assertNotNull(html);
 		Assert.assertTrue(html.indexOf("tom")>-1);
 	}
 	
-	@Test
+//	@Test
 	public void testhandle91() {
 		RestTemplate restTemplate = new RestTemplate();
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
@@ -218,7 +225,7 @@ public class UserControllerTest {
 		form.add("birthday", "1980-01-01");
 		form.add("salary", "4,500.00");
 		String html = restTemplate.postForObject(
-				"http://localhost:8080/chapter15/user/handle91.html",form,String.class);
+				"http://localhost:8080/spring3.x-chapter15/user/handle91.html",form,String.class);
 		Assert.assertNotNull(html);
 		Assert.assertTrue(html.indexOf("tom")>-1);
 	}		
