@@ -160,7 +160,11 @@
 			<version>1.3.1</version>
 		</dependency>
 
-
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.10</version>
+		</dependency>
 
 
 		<dependency>
@@ -183,5 +187,6 @@
 		<module>spring3.x-chapter11</module>
 		<module>spring3.x-chapter12</module>
 		<module>spring3.x-chapter13</module>
+		<module>spring3.x-chapter15</module>
 	</modules>
 </project>
