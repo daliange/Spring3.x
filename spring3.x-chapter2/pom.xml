@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.lijie.spring</groupId>
-	<artifactId>chapter2</artifactId>
+	<artifactId>spring3.x-chapter2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>chapter2</name>
 	<packaging>war</packaging>
