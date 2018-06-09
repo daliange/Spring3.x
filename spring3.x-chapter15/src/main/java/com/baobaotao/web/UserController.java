@@ -64,16 +64,23 @@ public class UserController {
 	/**
 	 * 指定请求类型
 	 * method ={ RequestMethod.POST,RequestMethod.GET}
-	 * 获取请求信息
+	 * headers
+	 * params
+	 * 
 	 * **/
-	@RequestMapping(method ={ RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView createUser(HttpServletRequest request,HttpServletResponse response) {
+	@RequestMapping(method ={ RequestMethod.POST,RequestMethod.GET},
+			headers="Content-Type=application/*", 
+			params = "!myParam")
+	public ModelAndView createUser(HttpServletRequest request,HttpServletResponse response,
+			@CookieValue("JSESSIONID") String sessionId,
+			@RequestHeader("Accept-Language") String accpetLanguage,
+			User user) {
 		
-		System.out.println("request.getCharacterEncoding()="+request.getCharacterEncoding());
-		System.out.println("request.getContentLength()="+request.getContentLength());
-		System.out.println("request.getContentType()="+request.getContentType());
-		System.out.println("request.getContextPath()="+request.getContextPath());
-		System.out.println("request.getCookies()="+request.getCookies());
+		System.out.println("User="+user);
+		
+		System.out.println("sessionId="+sessionId);
+		System.out.println("accpetLanguage="+accpetLanguage);
+		System.out.println("---------------------------------");
 		
 		/**获取request请求的头信息**/
 		System.out.println("Referer="+request.getHeader("Referer"));
@@ -92,7 +99,6 @@ public class UserController {
 			System.out.println(string+"=="+request.getHeader(string));
 		}
 	
-		User user = new User();
 		userService.createUser(user);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/createSuccess");
