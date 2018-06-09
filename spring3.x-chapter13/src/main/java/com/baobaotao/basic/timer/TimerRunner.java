@@ -5,8 +5,10 @@ import java.util.TimerTask;
 
 public class TimerRunner {
 	public static void main(String[] args) {
-         Timer timer = new Timer();
-         TimerTask task = new SimpleTimerTask();
-         timer.schedule(task,1000L,1000L);     
+		
+		/**Timer、TimerTask**/
+		Timer timer = new Timer();
+		TimerTask task = new SimpleTimerTask();
+		timer.schedule(task, 5000L, 1000L);
 	}
 }
