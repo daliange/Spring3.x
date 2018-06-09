@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -60,8 +61,38 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView createUser(User user) {
+	/**
+	 * 指定请求类型
+	 * method ={ RequestMethod.POST,RequestMethod.GET}
+	 * 获取请求信息
+	 * **/
+	@RequestMapping(method ={ RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView createUser(HttpServletRequest request,HttpServletResponse response) {
+		
+		System.out.println("request.getCharacterEncoding()="+request.getCharacterEncoding());
+		System.out.println("request.getContentLength()="+request.getContentLength());
+		System.out.println("request.getContentType()="+request.getContentType());
+		System.out.println("request.getContextPath()="+request.getContextPath());
+		System.out.println("request.getCookies()="+request.getCookies());
+		
+		/**获取request请求的头信息**/
+		System.out.println("Referer="+request.getHeader("Referer"));
+		System.out.println("Host="+request.getHeader("Host"));
+		System.out.println("Accept="+request.getHeader("Accept"));
+		System.out.println("Connection="+request.getHeader("Connection"));
+		System.out.println("Accept-Encoding="+request.getHeader("Accept-Encoding"));
+		System.out.println("Accept-Language="+request.getHeader("Accept-Language"));
+		System.out.println("DNT="+request.getHeader("DNT"));
+		System.out.println("Cookie="+request.getHeader("Cookie"));
+		System.out.println("Upgrade-Insecure-Requests="+request.getHeader("Upgrade-Insecure-Requests"));
+		System.out.println("User-Agent="+request.getHeader("User-Agent"));
+		
+		List<String> head = (List<String>)request.getHeaderNames();
+		for (String string : head) {
+			System.out.println(string+"=="+request.getHeader(string));
+		}
+	
+		User user = new User();
 		userService.createUser(user);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/createSuccess");
@@ -69,7 +100,7 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET, params = "!myParam")
+	@RequestMapping(value = "/register", method = { RequestMethod.POST,RequestMethod.GET}, params = "!myParam")
 	public String register(@ModelAttribute("user") User user) {
 		return "user/register";
 	}
