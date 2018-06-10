@@ -312,6 +312,7 @@ public class UserController {
 	@RequestMapping(value = "/handle51")
 	public ResponseEntity<User> handle51(HttpEntity<User> requestEntity) {
 		User user = requestEntity.getBody();
+		System.out.println("user="+user);
 		user.setUserId("1000");
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}

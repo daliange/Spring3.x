@@ -10,16 +10,16 @@
 
 	<context:component-scan base-package="com.baobaotao.web" />
 
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:order="100" p:viewClass="org.springframework.web.servlet.view.JstlView"
-		p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:order="100" 
+		p:viewClass="org.springframework.web.servlet.view.JstlView"
+		p:prefix="/WEB-INF/views/" 
+		p:suffix=".jsp" />
 
 	<mvc:annotation-driven conversion-service="conversionService" />
 
-	<!--国际化资源  -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
+	<!--国际化资源 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
 				<value>conf/i18n/messages</value>
@@ -28,8 +28,7 @@
 		</property>
 	</bean>
 
-	<bean id="conversionService"
-		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<list>
 				<bean class="com.baobaotao.domain.StringToUserConverter" />
@@ -37,27 +36,22 @@
 		</property>
 	</bean>
 
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"
 		p:messageConverters-ref="messageConverters">
 		<property name="webBindingInitializer">
 			<bean class="com.baobaotao.web.MyBindingInitializer" />
 		</property>
 	</bean>
 	<util:list id="messageConverters">
-		<bean
-			class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
-		<bean
-			class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
 		<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
-		<bean
-			class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
-		<bean
-			class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
-			p:marshaller-ref="xmlMarshaller" p:unmarshaller-ref="xmlMarshaller">
+		<bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
+			p:marshaller-ref="xmlMarshaller" 
+			p:unmarshaller-ref="xmlMarshaller">
 		</bean>
-		<bean
-			class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
 	</util:list>
 
 	<bean id="xmlMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
@@ -109,7 +103,7 @@
 	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver"
 		p:order="30" p:basename="conf/i18n/views" />
 
-    <!-- 协商多种视图解析器 -->
+	<!-- 协商多种视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"
 		p:order="0" p:ignoreAcceptHeader="true" p:favorPathExtension="false"
@@ -132,31 +126,27 @@
 		</property>
 	</bean>
 
-    <!-- 本地化解析 -->  
+	<!-- 本地化解析 -->
 	<bean id="localeResolver"
-		  class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
-		  p:cookieName="clientLanguage"
-		  p:cookieMaxAge="100000"
-		  p:cookiePath="/" 
-		  p:defaultLocale="zh_CN"/>
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+		p:cookieName="clientLanguage" p:cookieMaxAge="100000" p:cookiePath="/"
+		p:defaultLocale="zh_CN" />
 	<mvc:interceptors>
-	     <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 	</mvc:interceptors>
-	
-	<!-- 文件上传 --> 
+
+	<!-- 文件上传 -->
 	<bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-          p:defaultEncoding="UTF-8"
-          p:maxUploadSize="5000000"
-          p:uploadTempDir="upload/temp"/>        
-    
-    
-    <!-- 静态资源映射--> 
-    <mvc:default-servlet-handler/> 
-    <bean id="rpe" class="com.baobaotao.web.ResourcePathExposer"
-          init-method="init"/> 
-    <mvc:resources mapping="#{rpe.resourceRoot}/**" 
-                   location="/" cache-period="31536000"/>   
-          
-        
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:defaultEncoding="UTF-8" p:maxUploadSize="5000000" p:uploadTempDir="upload/temp" />
+
+
+	<!-- 静态资源映射 -->
+	<mvc:default-servlet-handler />
+	<bean id="rpe" class="com.baobaotao.web.ResourcePathExposer"
+		init-method="init" />
+	<mvc:resources mapping="#{rpe.resourceRoot}/**" location="/"
+		cache-period="31536000" />
+
+
 </beans>
