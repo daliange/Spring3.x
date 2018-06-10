@@ -75,6 +75,7 @@ public class UserController {
 			@CookieValue("JSESSIONID") String sessionId,
 			@RequestHeader("Accept-Language") String accpetLanguage,
 			User user) {
+		
 		/**获取session**/
 		HttpSession session = request.getSession();
 		System.out.println("---------------------------------");
@@ -233,10 +234,18 @@ public class UserController {
 		return "success";
 	}
 
+	/**
+	 * 使用InputStream、Reader、OutputStream、Writer作为参数
+	 * 参数当中有HttpServletResponse ，可以不设置返回值
+	 * Spring响应图片
+	 * **/
 	@RequestMapping(value = "/handle31")
-	public void handle31(OutputStream os) throws IOException {
+	public void handle31(HttpServletRequest request,
+			HttpServletResponse response,
+			OutputStream os) throws IOException {
+		OutputStream osnew = response.getOutputStream();
 		Resource res = new ClassPathResource("/image.jpg");
-		FileCopyUtils.copy(res.getInputStream(), os);
+		FileCopyUtils.copy(res.getInputStream(), osnew);
 	}
 
 	// @RequestMapping(value="/{userId}")
