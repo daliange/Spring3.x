@@ -4,3 +4,4 @@
 4、需要学会用RestTemplate、MultiValueMap进行url测试
 5、Cookie的值什么时间会变？
 6、@RequestMapping的参数、Controller的入参
+7、HttpSession session = request.getSession()获取HttpSession相关信息

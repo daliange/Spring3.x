@@ -75,10 +75,17 @@ public class UserController {
 			@CookieValue("JSESSIONID") String sessionId,
 			@RequestHeader("Accept-Language") String accpetLanguage,
 			User user) {
+		/**获取session**/
+		HttpSession session = request.getSession();
+		System.out.println("---------------------------------");
+		System.out.println("session.getId()="+session.getId());
+		System.out.println("session.getCreationTime()="+session.getCreationTime());
+		System.out.println("session.getLastAccessedTime()="+session.getLastAccessedTime());
+		System.out.println("session.getMaxInactiveInterval()="+session.getMaxInactiveInterval());
+		System.out.println("---------------------------------");
 		
 		System.out.println("User="+user);
-		
-		System.out.println("sessionId="+sessionId);
+		System.out.println("JSESSIONID="+sessionId);
 		System.out.println("accpetLanguage="+accpetLanguage);
 		System.out.println("---------------------------------");
 		
