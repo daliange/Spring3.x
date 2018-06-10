@@ -18,18 +18,18 @@
 	    </tr>
 	    <tr>
 	     <td>姓名：</td>
-	       <td><input type="text" name="realName" value="${user.realName}"/></td>
+	       <td><input type="text" name="realName" value="李洁"/></td>
 	    </tr>
 	    <tr>
 	     <td>生日：</td>
-	       <td><input type="text" name="realName" value="${user.birthday}"/></td>
+	       <td><input type="text" name="birthday" value="${user.birthday}"/></td>
 	    </tr>
 	    	    	    	    <tr>
 	     <td>工资：</td>
-	       <td><input type="text" name="realName" value="${user.salary}"/></td>
+	       <td><input type="text" name="salary" value="${user.salary}"/></td>
 	    </tr>
 	    <tr>
-	     <td colspan="2"><input type="submit" name="提交"/></td>
+	     <td colspan="2"><input type="submit" name="submit" value="提交"/></td>
 	    </tr>	    
     </table>
   </form>

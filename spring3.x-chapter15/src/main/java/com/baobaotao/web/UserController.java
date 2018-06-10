@@ -3,8 +3,11 @@ package com.baobaotao.web;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -52,6 +55,7 @@ import org.springframework.web.util.WebUtils;
 import com.baobaotao.UserService;
 import com.baobaotao.domain.Dept;
 import com.baobaotao.domain.User;
+import com.thoughtworks.xstream.converters.basic.URIConverter;
 
 @Controller
 @RequestMapping("/user")
@@ -68,12 +72,13 @@ public class UserController {
 	 * params
 	 * 
 	 * **/
-	@RequestMapping(method ={ RequestMethod.POST,RequestMethod.GET},
-			headers="Content-Type=application/*", 
-			params = "!myParam")
+	@RequestMapping(method ={ RequestMethod.POST,RequestMethod.GET})
+			//headers="Content-Type=application/*", 
+			//params = "!myParam"
 	public ModelAndView createUser(HttpServletRequest request,HttpServletResponse response,
 			@CookieValue("JSESSIONID") String sessionId,
 			@RequestHeader("Accept-Language") String accpetLanguage,
+			@RequestBody String body,
 			User user) {
 		
 		/**获取session**/
@@ -91,20 +96,32 @@ public class UserController {
 		System.out.println("---------------------------------");
 		
 		/**获取request请求的头信息**/
-		System.out.println("Referer="+request.getHeader("Referer"));
-		System.out.println("Host="+request.getHeader("Host"));
-		System.out.println("Accept="+request.getHeader("Accept"));
-		System.out.println("Connection="+request.getHeader("Connection"));
-		System.out.println("Accept-Encoding="+request.getHeader("Accept-Encoding"));
-		System.out.println("Accept-Language="+request.getHeader("Accept-Language"));
-		System.out.println("DNT="+request.getHeader("DNT"));
-		System.out.println("Cookie="+request.getHeader("Cookie"));
-		System.out.println("Upgrade-Insecure-Requests="+request.getHeader("Upgrade-Insecure-Requests"));
-		System.out.println("User-Agent="+request.getHeader("User-Agent"));
+		System.out.println("迭代器Enumeration遍历request.getHeaderNames()");
+		Enumeration<String> enu = request.getHeaderNames();
+		while(enu.hasMoreElements()){
+			String name = (String)enu.nextElement();
+			System.out.println(name+"="+request.getHeader(name));
+		}
 		
-		List<String> head = (List<String>)request.getHeaderNames();
-		for (String string : head) {
-			System.out.println(string+"=="+request.getHeader(string));
+//		System.out.println("Referer="+request.getHeader("Referer"));
+//		System.out.println("Host="+request.getHeader("Host"));
+//		System.out.println("Accept="+request.getHeader("Accept"));
+//		System.out.println("Connection="+request.getHeader("Connection"));
+//		System.out.println("Accept-Encoding="+request.getHeader("Accept-Encoding"));
+//		System.out.println("Accept-Language="+request.getHeader("Accept-Language"));
+//		System.out.println("DNT="+request.getHeader("DNT"));
+//		System.out.println("Cookie="+request.getHeader("Cookie"));
+//		System.out.println("Upgrade-Insecure-Requests="+request.getHeader("Upgrade-Insecure-Requests"));
+//		System.out.println("User-Agent="+request.getHeader("User-Agent"));
+		
+		System.out.println("---------------------------------");
+		/**打印@RequestBody**/
+		System.out.println("realName="+request.getParameter("realName"));
+		try {
+			System.out.println("@RequestBody="+URLDecoder.decode(body,"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	
 		userService.createUser(user);
@@ -256,12 +273,14 @@ public class UserController {
 	// return mav;
 	// }
 
+	/**将请求报文转换为字符串绑定到@RequestBody中**/
 	@RequestMapping(value = "/handle41")
 	public String handle41(@RequestBody String body) {
 		System.out.println(body);
 		return "success";
 	}
 
+	/**绑定@PathVariable到imageId**/
 	@ResponseBody
 	@RequestMapping(value = "/handle42/{imageId}")
 	public byte[] handle42(@PathVariable("imageId") String imageId)
@@ -275,6 +294,7 @@ public class UserController {
 	@RequestMapping(value = "/handle43")
 	public String handle43(HttpEntity<String> requestEntity) {
 		long contentLen = requestEntity.getHeaders().getContentLength();
+		System.out.println("contentLen="+contentLen);
 		System.out.println("user:" + requestEntity.getBody());
 		return "success";
 	}

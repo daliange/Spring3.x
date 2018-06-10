@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
 public class UserControllerTest {
 
 	/**需要学会用RestTemplate、MultiValueMap进行url测试**/
-    @Test
+//    @Test
 	public void testhandle1() {
     	/**
     	 * MultiValueMap
@@ -41,7 +41,17 @@ public class UserControllerTest {
 		form.add("realName", "45");
 		URI uri =restTemplate.postForLocation(
 				"http://localhost:8080/spring3.x-chapter15/user/handle1",form);
-		System.out.println(uri);
+	}
+	
+//	@Test
+	public void testhandle41() {
+		RestTemplate restTemplate = new RestTemplate();
+		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
+		form.add("userName", "tom");
+		form.add("password", "123456");
+		form.add("age", "45");
+		URI uri =restTemplate.postForLocation(
+				"http://localhost:8080/spring3.x-chapter15/user/handle41",form);
 	}
 	
 //	@Test
@@ -49,11 +59,11 @@ public class UserControllerTest {
 		RestTemplate restTemplate = new RestTemplate();
 		byte[] response = restTemplate.postForObject(
 				"http://localhost:8080/spring3.x-chapter15/user/handle42/{itemId}.html",null,byte[].class,"1233");
-		Resource outFile = new FileSystemResource("d:/image_copy.jpg");
+		Resource outFile = new FileSystemResource("/Users/lijie/Desktop/image_copy.jpg");
 		FileCopyUtils.copy(response, outFile.getFile());
 	}	
 
-//	@Test
+	@Test
 	public void testhandle43() {
 		RestTemplate restTemplate = new RestTemplate();
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
