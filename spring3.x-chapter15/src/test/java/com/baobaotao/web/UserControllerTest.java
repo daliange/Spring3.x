@@ -14,7 +14,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.util.FileCopyUtils;
@@ -125,8 +124,8 @@ public class UserControllerTest {
 		
 		
 		//②创建MappingJacksonHttpMessageConverter		
-		MappingJacksonHttpMessageConverter jsonConverter = new MappingJacksonHttpMessageConverter();		
-		restTemplate.getMessageConverters().add(jsonConverter);
+//		MappingJacksonHttpMessageConverter jsonConverter = new MappingJacksonHttpMessageConverter();		
+//		restTemplate.getMessageConverters().add(jsonConverter);
 		return restTemplate;
 	}	
 

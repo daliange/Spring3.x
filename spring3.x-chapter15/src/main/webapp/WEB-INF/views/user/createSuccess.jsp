@@ -5,5 +5,6 @@
 </head>
 <body>
       恭喜，用户${user.userName}创建成功，用户ID为${user.userId}
+      Model中获取的值为${name} 
 </body>
 </html>

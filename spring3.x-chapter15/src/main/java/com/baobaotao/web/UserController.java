@@ -29,6 +29,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
@@ -79,6 +80,7 @@ public class UserController {
 			@CookieValue("JSESSIONID") String sessionId,
 			@RequestHeader("Accept-Language") String accpetLanguage,
 			@RequestBody String body,
+			Model model,
 			User user) {
 		
 		/**获取session**/
@@ -123,6 +125,11 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		/**Model中添加属性**/
+		model.addAttribute("name", "lijie");
+		/**request中获取属性**/
+		System.out.println("request中获取Model属性："+request.getAttribute("name"));
 	
 		userService.createUser(user);
 		ModelAndView mav = new ModelAndView();
