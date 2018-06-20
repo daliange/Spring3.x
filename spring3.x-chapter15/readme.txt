@@ -29,3 +29,7 @@
 15、解决中文乱码问题web.xml需要配置
 	org.springframework.web.filter.CharacterEncodingFilter
 16、Iterator与Enumeration都是迭代器
+17、Spring，SpringMVC的父子容器关系
+18、web应用获取spring的容器
+	1）通过Spring提供的工具类获取ApplicationContext对象
+	2）

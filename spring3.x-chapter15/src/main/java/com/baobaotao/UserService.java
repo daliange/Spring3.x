@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.baobaotao.domain.User;
 
-@Service
+@Service("userService")
 public class UserService {
    
 	public void createUser(User user){

@@ -58,7 +58,7 @@ import com.baobaotao.domain.Dept;
 import com.baobaotao.domain.User;
 import com.thoughtworks.xstream.converters.basic.URIConverter;
 
-@Controller
+@Controller("userController")
 @RequestMapping("/user")
 // @SessionAttributes(value={"user","user1","user2"},types={Dept.class})
 public class UserController {
@@ -130,14 +130,14 @@ public class UserController {
 		model.addAttribute("name", "lijie");
 		/**request中获取属性**/
 		System.out.println("request中获取Model属性："+request.getAttribute("name"));
-	
+		
 		userService.createUser(user);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/createSuccess");
 		mav.addObject("user", user);
 		return mav;
 	}
-
+	
 	@RequestMapping(value = "/register", method = { RequestMethod.POST,RequestMethod.GET}, params = "!myParam")
 	public String register(@ModelAttribute("user") User user) {
 		return "user/register";
@@ -349,6 +349,7 @@ public class UserController {
 		User user = new User();
 		user.setUserId("1001");
 		user.setUserName("<>");
+		System.out.println("getUser");
 		return user;
 	}
 
