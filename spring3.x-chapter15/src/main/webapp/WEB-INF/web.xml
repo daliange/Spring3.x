@@ -19,7 +19,8 @@
 	<servlet>
 		<servlet-name>baobaotao</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
+		<!-- 配置load-on-startup，启动时就会加载 -->
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
