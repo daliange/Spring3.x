@@ -65,7 +65,7 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+	
 	/**
 	 * 指定请求类型
 	 * method ={ RequestMethod.POST,RequestMethod.GET}
