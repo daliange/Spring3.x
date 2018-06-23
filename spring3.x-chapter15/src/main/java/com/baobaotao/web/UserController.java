@@ -53,9 +53,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
-import com.baobaotao.UserService;
 import com.baobaotao.domain.Dept;
 import com.baobaotao.domain.User;
+import com.baobaotao.service.UserService;
 import com.thoughtworks.xstream.converters.basic.URIConverter;
 
 @Controller("userController")

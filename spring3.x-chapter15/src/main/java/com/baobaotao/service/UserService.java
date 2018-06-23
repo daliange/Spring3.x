@@ -1,4 +1,4 @@
-package com.baobaotao;
+package com.baobaotao.service;
 
 import org.springframework.stereotype.Service;
 

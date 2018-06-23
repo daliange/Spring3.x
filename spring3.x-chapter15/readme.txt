@@ -33,3 +33,13 @@
 18、web应用获取spring的容器
 	1）通过Spring提供的工具类获取ApplicationContext对象
 	2）
+	
+19、WebApplicationContext
+	WebApplicationContext是专门为Web应用准备的，它允许从相对于web根目录的路径中加载配置文件完成初始化工作。
+	WebApplicationContext扩展了ApplicationContext,
+	WebApplicationContext定义了一个常量ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE,在上下文启动时，
+	我们可以直接通过下面的语句从web容器中获取WebApplicationContext:
+	WebApplicationContext wac=
+		(WebApplicationContext)servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
+
+20、web上下文、spring上下文、springMVC上下文之间的关系
