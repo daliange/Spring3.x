@@ -43,3 +43,7 @@
 		(WebApplicationContext)servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 
 20、web上下文、spring上下文、springMVC上下文之间的关系
+
+21、@PathVariable用来做url参数绑定
+	@RequestMapping(value="/{userId}")
+	public ModelAndView showDetail(@PathVariable("userId") String userId){

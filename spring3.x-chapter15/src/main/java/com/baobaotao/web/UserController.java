@@ -138,6 +138,15 @@ public class UserController {
 		return mav;
 	}
 	
+	 @RequestMapping(value="/{userId}")
+	 public ModelAndView showDetail(@PathVariable("userId") String userId){
+		 ModelAndView mav = new ModelAndView();
+		 System.out.println("userId="+userId);
+		 mav.setViewName("user/showUser");
+		 mav.addObject("user", userService.getUserById(userId));
+		 return mav;
+	 }
+	
 	@RequestMapping(value = "/register", method = { RequestMethod.POST,RequestMethod.GET}, params = "!myParam")
 	public String register(@ModelAttribute("user") User user) {
 		return "user/register";
@@ -271,14 +280,6 @@ public class UserController {
 		Resource res = new ClassPathResource("/image.jpg");
 		FileCopyUtils.copy(res.getInputStream(), osnew);
 	}
-
-	// @RequestMapping(value="/{userId}")
-	// public ModelAndView showDetail(@PathVariable("userId") String userId){
-	// ModelAndView mav = new ModelAndView();
-	// mav.setViewName("user/showDetail");
-	// mav.addObject("user", userService.getUserById(userId));
-	// return mav;
-	// }
 
 	/**将请求报文转换为字符串绑定到@RequestBody中**/
 	@RequestMapping(value = "/handle41")
