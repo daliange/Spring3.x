@@ -46,4 +46,27 @@
 
 21、@PathVariable用来做url参数绑定
 	@RequestMapping(value="/{userId}")
-	public ModelAndView showDetail(@PathVariable("userId") String userId){
+	public ModelAndView showDetail(@PathVariable("userId") String userId){}
+
+22、RequestMapping的参数含义，userId表示包含userId参数的请求
+		@RequestMapping(value = "/createUser",
+		method ={ RequestMethod.POST,RequestMethod.GET},
+		headers="Content-Type=application/*", 
+		params = "userId")
+		
+23、①@RequestParam绑定方法入参
+	@RequestMapping(value = "/handle1")
+	public String handle1(
+			@RequestParam("userName") String userName,
+			@RequestParam("password") String password,
+			@RequestParam("realName") String realName	) {}
+
+24、②将Cooke值及报文头属性绑定到入参中
+	@RequestMapping(value = "/handle2")
+	public ModelAndView handle2(
+			@CookieValue("JSESSIONID") String sessionId,
+			@RequestHeader("Accept-Language") String accpetLanguage	) {}
+			
+25、③请求参数按名称匹配的方式绑定到user的属性中、方法返回对应的字符串代表逻辑视图名
+	@RequestMapping(value = "/handle3")
+	public String handle3(User user) {}

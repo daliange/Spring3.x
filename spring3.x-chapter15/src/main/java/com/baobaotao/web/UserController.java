@@ -73,9 +73,10 @@ public class UserController {
 	 * params
 	 * 
 	 * **/
-	@RequestMapping(method ={ RequestMethod.POST,RequestMethod.GET})
-			//headers="Content-Type=application/*", 
-			//params = "!myParam"
+	@RequestMapping(value = "/createUser",
+			method ={ RequestMethod.POST,RequestMethod.GET},
+			headers="Content-Type=application/*", 
+			params = "!myParam")
 	public ModelAndView createUser(HttpServletRequest request,HttpServletResponse response,
 			@CookieValue("JSESSIONID") String sessionId,
 			@RequestHeader("Accept-Language") String accpetLanguage,
