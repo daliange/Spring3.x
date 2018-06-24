@@ -42,7 +42,7 @@ public class UserControllerTest {
 				"http://localhost:8080/spring3.x-chapter15/user/handle1",form);
 	}
 	
-//	@Test
+	//@Test
 	public void testhandle41() {
 		RestTemplate restTemplate = new RestTemplate();
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
@@ -62,7 +62,7 @@ public class UserControllerTest {
 		FileCopyUtils.copy(response, outFile.getFile());
 	}	
 
-//	@Test
+	//@Test
 	public void testhandle43() {
 		RestTemplate restTemplate = new RestTemplate();
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();

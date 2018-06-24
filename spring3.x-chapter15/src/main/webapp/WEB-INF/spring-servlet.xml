@@ -21,10 +21,10 @@
 	<!-- 与下面的配置等价 -->
 	<mvc:annotation-driven conversion-service="conversionService" />
 	
-	<!--配置注解控制器映射器,它是SpringMVC中用来将Request请求URL到映射到具体Controller-->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-	<!--配置注解控制器映射器,它是SpringMVC中用来将具体请求映射到具体方法-->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+	<!--配置注解控制器映射器,它是SpringMVC中用来将Request请求URL到映射到具体Controller
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
+	<!--配置注解控制器映射器,它是SpringMVC中用来将具体请求映射到具体方法
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:order="100" 
@@ -50,6 +50,7 @@
 		</property>
 	</bean>
 
+	<!-- 配置HttpMessageConverter -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"
 		p:messageConverters-ref="messageConverters">
 		<property name="webBindingInitializer">
@@ -61,13 +62,16 @@
 		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
 		<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
 		<bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
+		<!-- 处理XML -->
 		<bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
 			p:marshaller-ref="xmlMarshaller" 
 			p:unmarshaller-ref="xmlMarshaller">
 		</bean>
+		<!-- 处理JSON -->
 		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
 	</util:list>
 
+	<!-- 声明Marshaller，使用XStream -->
 	<bean id="xmlMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
 		<property name="streamDriver">
 			<bean class="com.thoughtworks.xstream.io.xml.StaxDriver" />
@@ -83,7 +87,8 @@
 	<!-- FreeMarker基础设施及视图解析器配置 -->
 	<bean
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
-		p:templateLoaderPath="/WEB-INF/ftl" p:defaultEncoding="UTF-8">
+		p:templateLoaderPath="/WEB-INF/ftl" 
+		p:defaultEncoding="UTF-8">
 		<property name="freemarkerSettings">
 			<props>
 				<prop key="classic_compatible">true</prop>
@@ -93,11 +98,13 @@
 
 	<bean
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
-		p:order="5" p:suffix=".ftl" p:contentType="text/html; charset=utf-8" />
+		p:order="5" 
+		p:suffix=".ftl" 
+		p:contentType="text/html; charset=utf-8" />
 
 	<!-- Excel及PDF视图解析器配置 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
-		p:order="10" />
+		p:order="1" />
 	<bean id="userListExcel" class="com.baobaotao.web.UserListExcelView" />
 	<bean id="userListPdf" class="com.baobaotao.web.UserListPdfView" />
 

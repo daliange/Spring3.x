@@ -300,6 +300,7 @@ public class UserController {
 		return fileData;
 	}
 
+	//HttpEntity<String> requestEntity
 	@RequestMapping(value = "/handle43")
 	public String handle43(HttpEntity<String> requestEntity) {
 		long contentLen = requestEntity.getHeaders().getContentLength();
@@ -308,6 +309,7 @@ public class UserController {
 		return "success";
 	}
 
+	//ResponseEntity<byte[]>
 	@RequestMapping(value = "/handle44/{imageId}")
 	public ResponseEntity<byte[]> handle44(
 			@PathVariable("imageId") String imageId) throws Throwable {
@@ -326,8 +328,10 @@ public class UserController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
+	//@ModelAttribute("user") User user
 	@RequestMapping(value = "/handle61")
 	public String handle61(@ModelAttribute("user") User user) {
+		System.out.println("user.getUserName()="+user.getUserName());
 		user.setUserId("1000");
 		return "/user/createSuccess";
 	}

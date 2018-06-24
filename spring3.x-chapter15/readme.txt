@@ -70,3 +70,7 @@
 25、③请求参数按名称匹配的方式绑定到user的属性中、方法返回对应的字符串代表逻辑视图名
 	@RequestMapping(value = "/handle3")
 	public String handle3(User user) {}
+	
+26、处理方法用response返回响应，处理方法的返回值可以设置为void
+
+27、XML与JSON的请求处理
